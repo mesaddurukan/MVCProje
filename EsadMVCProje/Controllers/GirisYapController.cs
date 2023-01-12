@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+using EsadMVCProje.Models.Sınıflar;
+
+namespace EsadMVCProje.Controllers
+{
+    public class GirisYapController : Controller
+    {
+        // GET: GirisYap
+        Context c = new Context();
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+                [HttpPost]
+                public ActionResult Login(Admin Ad)
+                {
+                    var bilgiler = c.Admins.FirstOrDefault(x =>
+                    x.Kullanıcı == Ad.Kullanıcı && x.Sifre ==
+                    Ad.Sifre);
+            if (bilgiler != null)
+            {
+                FormsAuthentication.SetAuthCookie(bilgiler.Kullanıcı, false);
+                Session["Kullanıcı"] = bilgiler.Kullanıcı.ToString();
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "GirisYap");
+
+        }
+    }
+}

@@ -1,0 +1,25 @@
+﻿@model EsadMVCProje.Models.Sınıflar.Blog
+@{
+    ViewBag.Title = "YeniBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Blog Ekleme </h2>
+<br />
+<form class="form-group" action="/Admin/YeniBlog/" method="post">
+    <label>Başlık</label>
+
+    <input type="text" class="form-control" placeholder="Başlığı yazınız..." name="Baslik" required />
+    <br />
+    <label>Tarih</label>
+    <input type="text" class="form-control" placeholder="GG/AA/YYYY" name="Tarih" required />
+    <br />
+    <label>Fotoğraf URL</label>
+    <input type="text" class="form-control" placeholder="Fotoğraf Url'i yazınız..." name="BlokImage" required />
+    <br />
+    <label>Açıklama</label>
+    <textarea rows="7" name="Aciklama" class="form-control" required placeholder="Açıklamayı yazınız..."></textarea>
+    <br />
+    <button class="btn btn-primary">Blog Kaydet</button>
+</form>
+

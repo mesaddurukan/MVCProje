@@ -1,0 +1,24 @@
+﻿@using EsadMVCProje.Models.Sınıflar
+@model List<Hakkimizda>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TestLayOut.cshtml";
+}
+
+<div class="content">
+    <div class="wrap">
+        <div class="about">
+            <h3>Hakkımızda</h3>
+            @foreach(var x in Model)  
+            { 
+            <img src="@x.FotoUrl" alt="" />
+            <br />
+                <p style="text-align:justify">@x.Aciklama</p> 
+            }
+
+           
+             
+        </div>
+    </div>
+</div>
+

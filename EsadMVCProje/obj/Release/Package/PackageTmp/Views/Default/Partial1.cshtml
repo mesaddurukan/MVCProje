@@ -1,0 +1,36 @@
+﻿@using EsadMVCProje.Models.Sınıflar
+@model List<Blog>
+
+<div class="con-bot">
+
+    @foreach (var i in Model)
+    {
+        <div class="left">
+            <div class="bot-left">
+                <img src="@i.BlokImage" style="width:300px; height:150px;" alt="" />
+            </div>
+            <div class="left-text">
+                <h4>@i.Baslik</h4>
+                <span class="doller">@i.Tarih.ToShortDateString()</span>
+                <p>
+                    @if (i.Aciklama.Length < 80)
+                    {
+                        @i.Aciklama
+                    }
+                    else
+                    {
+                        @i.Aciklama.Substring(0, 80) <span>...</span>
+                    }
+
+                </p>
+                <p><a href="/Blog/BlogDetay/@i.ID" target="_blank"><span class="read">Devamını Oku >></span></a></p>
+            </div>
+        </div>
+
+
+    }
+
+    @Html.Action("Partial2", "Default")
+
+    <div class="clear"></div>
+</div>

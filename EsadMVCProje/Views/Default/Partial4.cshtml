@@ -1,0 +1,35 @@
+﻿@using EsadMVCProje.Models.Sınıflar
+@model List<Blog>
+
+<div class="padding1">
+    <h4>En Beğendiğim Yerler</h4>
+    <div class="box-left">
+
+        @foreach (var i in Model)
+        {
+
+            <div class="bot-img">
+                <img src="@i.BlokImage" alt="" style="width:125px; height:65px;" />
+            </div>
+            <div class="bot-desc">
+                <p>
+                    @if (i.Aciklama.Length < 50)
+                    {
+                        @i.Aciklama
+                    }
+                    else
+                    {
+                        @i.Aciklama.Substring(0, 50) <span>...</span>
+                    }  
+                </p>
+            </div>
+            <div class="clear"></div>
+        }
+
+
+    </div>
+    <div class="box1-left">
+        @Html.Action("Partial5", "Default")
+
+    </div>
+</div>
